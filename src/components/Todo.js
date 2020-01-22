@@ -4,12 +4,10 @@ import { initialState, todoReducer } from "../reducers/todoReducer";
 
 const Todo = props => {
     
-  
-  
-    return (
+  return (
     <div
       className={props.item.completed ? "completed" : "not-completed"}
-    //   onClick={() => dispatch({ type: "ADD_TODO", payload: newTodo})}
+      onClick={() => props.dispatch({ type: "COMPLETE_TODO", payload: props.item })}
     >
         
       <p>{props.item.todo}</p>

@@ -21,6 +21,7 @@ export const initialState = [
 ]
 
 export const todoReducer = (state, action) => {
+   
     switch (action.type){
         case "ADD_TODO":
             return [
@@ -30,20 +31,20 @@ export const todoReducer = (state, action) => {
                     id: Date.now()
                 }
             ];
-        case "COMPLETE_TODO":
-            return[
-                state.map(item => {
-                    item.completed = true
-                })
-            ];
-        case "CLEAR_TODO":
-            return [
-                ...state,
-                state.filter(item => item.completed === true)
-            ]
-            default:
-                return state; 
+     case 'COMPLETE_TODO':
+         const completedState = state.map(item => {
+            if(item.id === action.payload.id){
+                item.completed = !item.completed;
+            }
+            return item;
+          })
+          return completedState;
+          case 'CLEAR_TODO':
+            const clearedState =  state.filter(item => item.completed === true)
+              return clearedState;
+          default:
+            return state;
     }
     
-    return state;
+    
 }

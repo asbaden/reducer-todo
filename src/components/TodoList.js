@@ -7,10 +7,9 @@ const TodoList = props => {
     return (
     <div>
       {props.state.map(item => (
-        <Todo key={item.id} item={item} />
+        <Todo key={item.id} item={item} dispatch={props.dispatch} />
       ))}
 
-      <button>Clear Completed</button>
     </div>
   );
 }
